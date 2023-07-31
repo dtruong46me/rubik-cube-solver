@@ -123,8 +123,17 @@ class RubikCube:
         else:
             self.rubik['U'][0][0], self.rubik['U'][0][1], self.rubik['U'][0][2], self.rubik['U'][1][0],\
             self.rubik['U'][1][2], self.rubik['U'][2][0], self.rubik['U'][2][1], self.rubik['U'][2][2] =\
-            self.rubik['U'][2][0], self.rubik['U'][1][0], self.rubik['U'][0][0], self.rubik['U'][2][1],\
-            self.rubik['U'][0][1], self.rubik['U'][2][2], self.rubik['U'][1][2], self.rubik['U'][0][2]
+            self.rubik['U'][0][2], self.rubik['U'][1][2], self.rubik['U'][2][2], self.rubik['U'][1][1],\
+            self.rubik['U'][2][1], self.rubik['U'][0][0], self.rubik['U'][1][0], self.rubik['U'][2][0]
+
+            self.rubik['F'][0][0], self.rubik['F'][0][1], self.rubik['F'][0][2],\
+            self.rubik['L'][0][0], self.rubik['L'][0][1], self.rubik['L'][0][2],\
+            self.rubik['B'][0][0], self.rubik['B'][0][1], self.rubik['B'][0][2],\
+            self.rubik['R'][0][0], self.rubik['R'][0][1], self.rubik['R'][0][2] = \
+            self.rubik['L'][0][0], self.rubik['L'][0][1], self.rubik['L'][0][2],\
+            self.rubik['B'][0][0], self.rubik['B'][0][1], self.rubik['B'][0][2],\
+            self.rubik['R'][0][0], self.rubik['R'][0][1], self.rubik['R'][0][2],\
+            self.rubik['F'][0][0], self.rubik['F'][0][1], self.rubik['F'][0][2]
     
     # Rotate 'D' face clockwise  
     def rotate_D(self, direction):
