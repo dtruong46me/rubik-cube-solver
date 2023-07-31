@@ -42,6 +42,7 @@ class RubikCube:
             # print(face_rand, face, direction)
             suffle_seq.append(face + encode)
             self.rotate_cube(face, direction)
+            self.display()
 
         print("\nSuffle Sequence: ")
         for i in range(n_suffles):
@@ -75,8 +76,8 @@ class RubikCube:
             'Y': '\033[93m',   # Yellow
             'G': '\033[92m',   # Green
             'B': '\033[94m',   # Blue
-            'R': '\033[91m',   # Red
-            'O': '\033[33m'    # Orange
+            'R': '\033[31m',   # Red
+            'O': '\033[91m'    # Orange
         }
         return colors[color] + text + '\033[0m'  # Reset to default color
 
@@ -213,6 +214,10 @@ class RubikCube:
     # Rotate 'R' face clockwise  
     def rotate_R(self, direction):
         if direction == 'clockwise':
+            for i in range(3):
+                for j in range(3):
+                    print(self.rubik['R'][i][j], end = ' ')
+                print()
             self.rubik['R'][0][0], self.rubik['R'][0][1], self.rubik['R'][0][2], self.rubik['R'][1][0],\
             self.rubik['R'][1][2], self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2] =\
             self.rubik['R'][2][0], self.rubik['R'][1][0], self.rubik['R'][0][0], self.rubik['R'][2][1],\
@@ -228,6 +233,10 @@ class RubikCube:
             self.rubik['F'][0][2], self.rubik['F'][1][2], self.rubik['F'][2][2]
         
         elif direction == 'counterclockwise':
+            for i in range(3):
+                for j in range(3):
+                    print(self.rubik['R'][i][j], end = ' ')
+                print()
             self.rubik['R'][0][0], self.rubik['R'][0][1], self.rubik['R'][0][2], self.rubik['R'][1][0],\
             self.rubik['R'][1][2], self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2] =\
             self.rubik['R'][0][2], self.rubik['R'][1][2], self.rubik['R'][2][2], self.rubik['R'][1][1],\
@@ -314,10 +323,3 @@ class RubikCube:
 
         else:
             print('Invalid direction!')
-
-test_rubik = RubikCube()
-test_rubik.rotate_U('clockwise')
-test_rubik.rotate_L('clockwise')
-test_rubik.rotate_U('clockwise')
-test_rubik.rotate_L('clockwise')
-test_rubik.display()
