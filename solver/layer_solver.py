@@ -1,4 +1,4 @@
-class RubikSolver:
+class LayerSolver:
     def __init__(self, rubik) -> None:
         self.rubik = rubik
     
