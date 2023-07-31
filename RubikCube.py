@@ -104,6 +104,7 @@ class RubikCube:
         print('\033[35m+------------+-------------+-------------+-------------+-------------+-------------+\033[97m\n')
     # END: Display the Rubik Cube #
 
+
     # Rotate 'U' face clockwise
     def rotate_U(self, direction):
         if direction == 'clockwise':
@@ -120,7 +121,8 @@ class RubikCube:
             self.rubik['F'][0][0], self.rubik['F'][0][1], self.rubik['F'][0][2],\
             self.rubik['L'][0][0], self.rubik['L'][0][1], self.rubik['L'][0][2],\
             self.rubik['B'][0][0], self.rubik['B'][0][1], self.rubik['B'][0][2]
-        else:
+
+        elif direction == 'counterclockwise':
             self.rubik['U'][0][0], self.rubik['U'][0][1], self.rubik['U'][0][2], self.rubik['U'][1][0],\
             self.rubik['U'][1][2], self.rubik['U'][2][0], self.rubik['U'][2][1], self.rubik['U'][2][2] =\
             self.rubik['U'][0][2], self.rubik['U'][1][2], self.rubik['U'][2][2], self.rubik['U'][1][1],\
@@ -134,13 +136,44 @@ class RubikCube:
             self.rubik['B'][0][0], self.rubik['B'][0][1], self.rubik['B'][0][2],\
             self.rubik['R'][0][0], self.rubik['R'][0][1], self.rubik['R'][0][2],\
             self.rubik['F'][0][0], self.rubik['F'][0][1], self.rubik['F'][0][2]
+        
+        else:
+            print('Invalid direction!')
     
     # Rotate 'D' face clockwise  
     def rotate_D(self, direction):
         if direction == 'clockwise':
-            self.rubik['D'][0][0], self.rubik['D'][0][1], self.rubik['D'][0][2], self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2], self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2], self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2] = self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2], self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2], self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2], self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2]
+            self.rubik['D'][0][0], self.rubik['D'][0][1], self.rubik['D'][0][2], self.rubik['D'][1][0],\
+            self.rubik['D'][1][2], self.rubik['D'][2][0], self.rubik['D'][2][1], self.rubik['D'][2][2] =\
+            self.rubik['D'][2][0], self.rubik['D'][1][0], self.rubik['D'][0][0], self.rubik['D'][2][1],\
+            self.rubik['D'][0][1], self.rubik['D'][2][2], self.rubik['D'][1][2], self.rubik['D'][0][2]
+
+            self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2],\
+            self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2],\
+            self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2],\
+            self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2] = \
+            self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2],\
+            self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2],\
+            self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2],\
+            self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2]
+
+        elif direction == 'counterclockwise':
+            self.rubik['D'][0][0], self.rubik['D'][0][1], self.rubik['D'][0][2], self.rubik['D'][1][0],\
+            self.rubik['D'][1][2], self.rubik['D'][2][0], self.rubik['D'][2][1], self.rubik['D'][2][2] =\
+            self.rubik['D'][0][2], self.rubik['D'][1][2], self.rubik['D'][2][2], self.rubik['D'][1][1],\
+            self.rubik['D'][2][1], self.rubik['D'][0][0], self.rubik['D'][1][0], self.rubik['D'][2][0]
+
+            self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2],\
+            self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2],\
+            self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2],\
+            self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2] = \
+            self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2],\
+            self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2],\
+            self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2],\
+            self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2]
+        
         else:
-            self.rubik['D'][0][0], self.rubik['D'][0][1], self.rubik['D'][0][2], self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2], self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2], self.rubik['L'][2][0], self.rubik['L'][2][1], self.rubik['L'][2][2] = self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2], self.rubik['B'][2][0], self.rubik['B'][2][1], self.rubik['B'][2][2], self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2], self.rubik['R'][2][0], self.rubik['R'][2][1], self.rubik['R'][2][2]
+            print('Invalid direction!')
 
     # Rotate 'L' face clockwise
     def rotate_L(self, direction):
