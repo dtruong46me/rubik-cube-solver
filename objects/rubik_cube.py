@@ -12,7 +12,7 @@ class RubikCube:
         }
     
     # BEGIN: Suffle the Rubik Cube #
-    def suffle(self, n_suffles) -> None:
+    def suffle(self, n_suffles: int) -> None:
         # Map random int to face name
         faces = {
             1 : 'U',
@@ -50,6 +50,10 @@ class RubikCube:
         print('\n')  
     # END: Suffle the Rubik Cube #
 
+    def suffle_from_input(self, list_seq: list) -> None:
+        for face, direction in list_seq:
+            
+            self.rotate_cube(face, direction)
 
     # BEGIN: Rotate the Rubik Cube #
     def rotate_cube(self, face, direction):
@@ -104,6 +108,45 @@ class RubikCube:
 
         print('\033[35m+------------+-------------+-------------+-------------+-------------+-------------+\033[97m\n')
     # END: Display the Rubik Cube #
+
+    # BEGIN: Input to Suffle Sequence from user input
+    def input_user(self) -> list:
+        # List sequence is the list of tuple # For example: list_seq = [('U', 'clockwise'), ('F', 'counterclockwise')]
+        # The target of the list is to change the user input to list of sequence for method rotate_cube(self, face, direction) above.
+        # For example the user input: U F L' F R U R' ...
+        list_seq = []
+        moves = input('Suffle Sequence: ').split(' ')
+
+        for move in moves:
+            face = move[0]
+            direction = 'clockwise'
+
+            if len(move) == 2:
+                direction = 'counterclockwise'
+            
+            list_seq.append((face, direction))
+
+        return list_seq
+    # END: Input to Suffle Sequence
+
+    # BEGIN: Input to Suffle Sequence from user input
+    def input_file(self, filepath) -> list:
+        list_seq = []
+
+        with open(filepath) as f:
+            moves = f.readline().split(' ')
+
+            for move in moves:
+                face = move[0]
+                direction = 'clockwise'
+
+                if len(move) == 2:
+                    direction = 'counterclockwise'
+                
+                list_seq.append((face, direction))
+
+        return list_seq
+    # END: Input to Suffle Sequence
 
 
     # Rotate 'U' face clockwise
@@ -274,7 +317,7 @@ class RubikCube:
         elif direction == 'counterclockwise':
             self.rubik['F'][0][0], self.rubik['F'][0][1], self.rubik['F'][0][2], self.rubik['F'][1][0],\
             self.rubik['F'][1][2], self.rubik['F'][2][0], self.rubik['F'][2][1], self.rubik['F'][2][2] =\
-            self.rubik['F'][0][2], self.rubik['F'][1][2], self.rubik['F'][2][2], self.rubik['F'][1][1],\
+            self.rubik['F'][0][2], self.rubik['F'][1][2], self.rubik['F'][2][2], self.rubik['F'][0][1],\
             self.rubik['F'][2][1], self.rubik['F'][0][0], self.rubik['F'][1][0], self.rubik['F'][2][0]
 
             self.rubik['U'][2][0], self.rubik['U'][2][1], self.rubik['U'][2][2],\

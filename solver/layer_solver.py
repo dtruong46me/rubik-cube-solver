@@ -1,12 +1,15 @@
+from ..objects.rubik_cube import RubikCube
+
 class LayerSolver:
-    def __init__(self, rubik) -> None:
+    def __init__(self, rubik: RubikCube) -> None:
         self.rubik = rubik
     
-    def sovle(self):
+    def sovle(self) -> list:
         solution = []
         solution += self.solve_U_layer
         solution += self.solve_M_layer
         solution += self.solve_D_layer
+        
         return solution
 
     def solve_U_layer(self) -> list:
