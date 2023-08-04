@@ -1,4 +1,6 @@
-from ..objects.rubik_cube import RubikCube
+import sys
+sys.path.append('.')
+from objects.rubik_cube import RubikCube
 
 class LayerSolver:
     def __init__(self, rubik: RubikCube) -> None:
