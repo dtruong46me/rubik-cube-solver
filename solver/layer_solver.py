@@ -2,7 +2,7 @@ from ..objects.rubik_cube import RubikCube
 
 class LayerSolver:
     def __init__(self, rubik: RubikCube) -> None:
-        self.rubik = rubik
+        self.rubik = rubik.rubik
     
     def sovle(self) -> list:
         solution = []
@@ -15,9 +15,10 @@ class LayerSolver:
     def solve_U_layer(self) -> list:
         solution_U = []
 
-        '''
-        solution here
-        '''
+        # For each solution, we have to 
+        # Step 1: Solve the 'U' cross
+        # Step 2: Solve 4 vertexes
+        # Step 3: 
 
         return solution_U
     
