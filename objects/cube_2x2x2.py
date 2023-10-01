@@ -13,18 +13,13 @@ class RubikCube2:
         }
 
     """
-                ____________
-               /\     \     \ 
-              /  \_____\_____\ 
-             /\  /\     \     \ 
-            /  \/  \_____\_____\ 
-            \  /\  /     /     /
-             \/  \/_____/_____/
-              \  /     /     /
-               \/_____/_____/
- 
-    """
+         _____           __          _______   
+        /  _  \____ __ _/ /_____ __ /  ____/_____ __ ___ _ __  ___ _____ ____ 
+       /  / / // __` /_  __// __` /_\____  / ___// /  _ \ /  |/  // ___/  __ \ 
+      /  /_/ // /_/ / / /_ / /_/ /_ ___  \/ /__ / //  __//      // /__ /  ___/
+     /______/ \___ /  \__/ \___ /________/\___//_/ \___//__/ |_/ \___/ \____/
 
+    """
 
     # BEGIN: Display the Rubik Cube #
     def colored_text(self, text, color):
@@ -48,7 +43,7 @@ class RubikCube2:
 
         print('\033[35m+--- U ----+---- D ----+---- L ----+---- R ----+---- F ----+---- B ----+\033[35m')
     
-        for i in range(3):
+        for i in range(2):
             u_row = ' '.join(self.colored_text(cell, self.faces['U'][i][j]) for j, cell in enumerate(self.faces['U'][i]))
             d_row = ' '.join(self.colored_text(cell, self.faces['D'][i][j]) for j, cell in enumerate(self.faces['D'][i]))
             l_row = ' '.join(self.colored_text(cell, self.faces['L'][i][j]) for j, cell in enumerate(self.faces['L'][i]))
@@ -61,6 +56,7 @@ class RubikCube2:
         print('\033[35m+----------+-----------+-----------+-----------+-----------+-----------+\033[97m\n')
     # END: Display the Rubik Cube #
 
+    # BEGIN: Rotate Rubik Faces #
     def rotate_face(self, face: str, clockwise=True):
         
         if face == 'U':
@@ -84,7 +80,7 @@ class RubikCube2:
         else:
             print("Invalid Rubik\'s face")
 
-    
+    # DETAILS: Rotate U D L R F B
     def move_U(self, clockwise=True):
         if clockwise==True:
             self.faces['U'][0][0], self.faces['U'][0][1], self.faces['U'][1][0], self.faces['U'][1][1] = \
@@ -104,21 +100,25 @@ class RubikCube2:
             self.faces['L'][0][0], self.faces['L'][0][1], self.faces['B'][0][0], self.faces['B'][0][1], \
             self.faces['R'][0][0], self.faces['R'][0][1], self.faces['F'][0][0], self.faces['F'][0][1]
     
-
     def move_D(self, clockwise=True):
         if clockwise==True:
             self.faces['D'][0][0], self.faces['D'][0][1], self.faces['D'][1][0], self.faces['D'][1][1] = \
             self.faces['D'][1][0], self.faces['D'][0][0], self.faces['D'][1][1], self.faces['D'][0][1]
 
-            self.faces['F'][0][0], self.faces['F'][0][1], self.faces['L'][0][0], self.faces['L'][0][1], \
-            self.faces['B'][0][0], self.faces['B'][0][1], self.faces['R'][0][0], self.faces['R'][0][1] = \
-            self.faces['']
+            self.faces['F'][1][0], self.faces['F'][1][1], self.faces['L'][1][0], self.faces['L'][1][1], \
+            self.faces['B'][1][0], self.faces['B'][1][1], self.faces['R'][1][0], self.faces['R'][1][1] = \
+            self.faces['L'][1][0], self.faces['L'][1][1], self.faces['B'][1][0], self.faces['B'][1][1], \
+            self.faces['R'][1][0], self.faces['R'][1][1], self.faces['F'][1][0], self.faces['F'][1][1]
 
         if clockwise==False:
             self.faces['D'][0][0], self.faces['D'][0][1], self.faces['D'][1][0], self.faces['D'][1][1] = \
             self.faces['D'][1][0], self.faces['D'][0][0], self.faces['D'][1][1], self.faces['D'][0][1]
 
-    
+            self.faces['F'][1][0], self.faces['F'][1][1], self.faces['L'][1][0], self.faces['L'][1][1], \
+            self.faces['B'][1][0], self.faces['B'][1][1], self.faces['R'][1][0], self.faces['R'][1][1] = \
+            self.faces['R'][1][0], self.faces['R'][1][1], self.faces['F'][1][0], self.faces['F'][1][1], \
+            self.faces['L'][1][0], self.faces['L'][1][1], self.faces['B'][1][0], self.faces['B'][1][1]
+
     def move_L(self, clockwise=True):
         if clockwise==True:
             self.faces['L'][0][0], self.faces['L'][0][1], self.faces['L'][1][0], self.faces['L'][1][1] = \
@@ -160,4 +160,22 @@ class RubikCube2:
 
     def is_solve(self) -> bool:
 
-        return
+        solved_rubik = {
+            'U': [['W' for i in range(2)] for j in range(2)],
+            'D': [['Y' for i in range(2)] for j in range(2)],
+            'L': [['G' for i in range(2)] for j in range(2)],
+            'R': [['B' for i in range(2)] for j in range(2)],
+            'F': [['R' for i in range(2)] for j in range(2)],
+            'B': [['O' for i in range(2)] for j in range(2)],
+        }
+
+        faces = ['U', 'D', 'L', 'R', 'F', 'B']
+
+        for face in faces:
+            for i in range(2):
+                for j in range(2):
+                    if self.faces[face][i][j] != solved_rubik[face][i][j]:
+                        return False
+                    
+        return True
+
