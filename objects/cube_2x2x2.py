@@ -176,7 +176,6 @@ class RubikCube2:
             self.faces['R'][0][0], self.faces['R'][1][0], self.faces['D'][0][1], self.faces['D'][0][0], \
             self.faces['L'][1][1], self.faces['L'][0][1], self.faces['U'][1][0], self.faces['U'][1][1]
 
-    
     def move_B(self, clockwise=True):
         if clockwise==True:
             self.faces['B'][0][0], self.faces['B'][0][1], self.faces['B'][1][0], self.faces['B'][1][1] = \
