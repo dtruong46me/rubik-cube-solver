@@ -124,29 +124,57 @@ class RubikCube2:
             self.faces['L'][0][0], self.faces['L'][0][1], self.faces['L'][1][0], self.faces['L'][1][1] = \
             self.faces['L'][1][0], self.faces['L'][0][0], self.faces['L'][1][1], self.faces['L'][0][1]
 
+            self.faces['F'][0][0], self.faces['F'][1][0], self.faces['D'][0][0], self.faces['D'][1][0], \
+            self.faces['B'][1][1], self.faces['B'][0][1], self.faces['U'][0][0], self.faces['U'][1][0] = \
+            self.faces['U'][0][0], self.faces['U'][1][0], self.faces['F'][0][0], self.faces['F'][1][0], \
+            self.faces['D'][0][0], self.faces['D'][0][1], self.faces['B'][1][1], self.faces['B'][0][1]
+
         if clockwise==False:
             self.faces['L'][0][0], self.faces['L'][0][1], self.faces['L'][1][0], self.faces['L'][1][1] = \
             self.faces['L'][1][0], self.faces['L'][0][0], self.faces['L'][1][1], self.faces['L'][0][1]
 
+            self.faces['F'][0][0], self.faces['F'][1][0], self.faces['D'][0][0], self.faces['D'][1][0], \
+            self.faces['B'][1][1], self.faces['B'][0][1], self.faces['U'][0][0], self.faces['U'][1][0] = \
+            self.faces['D'][0][0], self.faces['D'][1][0], self.faces['B'][1][1], self.faces['B'][0][1], \
+            self.faces['U'][0][0], self.faces['U'][1][0], self.faces['F'][0][0], self.faces['F'][1][0]
     
     def move_R(self, clockwise=True):
         if clockwise==True:
             self.faces['R'][0][0], self.faces['R'][0][1], self.faces['R'][1][0], self.faces['R'][1][1] = \
             self.faces['R'][1][0], self.faces['R'][0][0], self.faces['R'][1][1], self.faces['R'][0][1]
 
+            self.faces['F'][0][1], self.faces['F'][1][1], self.faces['D'][0][1], self.faces['D'][1][1], \
+            self.faces['B'][1][0], self.faces['B'][0][0], self.faces['U'][0][1], self.faces['U'][1][1] = \
+            self.faces['D'][0][1], self.faces['D'][1][1], self.faces['B'][1][0], self.faces['B'][0][0], \
+            self.faces['U'][0][1], self.faces['U'][1][1], self.faces['F'][0][1], self.faces['F'][1][1]
+
         if clockwise==False:
             self.faces['R'][0][0], self.faces['R'][0][1], self.faces['R'][1][0], self.faces['R'][1][1] = \
             self.faces['R'][1][0], self.faces['R'][0][0], self.faces['R'][1][1], self.faces['R'][0][1]
 
+            self.faces['F'][0][1], self.faces['F'][1][1], self.faces['D'][0][1], self.faces['D'][1][1], \
+            self.faces['B'][1][0], self.faces['B'][0][0], self.faces['U'][0][1], self.faces['U'][1][1] = \
+            self.faces['U'][0][1], self.faces['U'][1][1], self.faces['F'][0][1], self.faces['F'][1][1], \
+            self.faces['D'][0][1], self.faces['D'][1][1], self.faces['B'][1][0], self.faces['B'][0][0]
 
     def move_F(self, clockwise=True):
         if clockwise==True:
             self.faces['F'][0][0], self.faces['F'][0][1], self.faces['F'][1][0], self.faces['F'][1][1] = \
             self.faces['F'][1][0], self.faces['F'][0][0], self.faces['F'][1][1], self.faces['F'][0][1]
 
+            self.faces['U'][1][0], self.faces['U'][1][1], self.faces['R'][0][0], self.faces['R'][1][0], \
+            self.faces['D'][0][1], self.faces['D'][0][0], self.faces['L'][1][1], self.faces['L'][0][1] = \
+            self.faces['L'][1][1], self.faces['L'][0][1], self.faces['U'][1][0], self.faces['U'][1][1], \
+            self.faces['R'][0][0], self.faces['R'][1][0], self.faces['D'][0][1], self.faces['D'][0][0]
+
         if clockwise==False:
             self.faces['F'][0][0], self.faces['F'][0][1], self.faces['F'][1][0], self.faces['F'][1][1] = \
             self.faces['F'][1][0], self.faces['F'][0][0], self.faces['F'][1][1], self.faces['F'][0][1]
+
+            self.faces['U'][1][0], self.faces['U'][1][1], self.faces['R'][0][0], self.faces['R'][1][0], \
+            self.faces['D'][0][1], self.faces['D'][0][0], self.faces['L'][1][1], self.faces['L'][0][1] = \
+            self.faces['R'][0][0], self.faces['R'][1][0], self.faces['D'][0][1], self.faces['D'][0][0], \
+            self.faces['L'][1][1], self.faces['L'][0][1], self.faces['U'][1][0], self.faces['U'][1][1]
 
     
     def move_B(self, clockwise=True):
@@ -154,11 +182,25 @@ class RubikCube2:
             self.faces['B'][0][0], self.faces['B'][0][1], self.faces['B'][1][0], self.faces['B'][1][1] = \
             self.faces['B'][1][0], self.faces['B'][0][0], self.faces['B'][1][1], self.faces['B'][0][1]
 
+            self.faces['U'][0][0], self.faces['U'][0][1], self.faces['R'][0][1], self.faces['R'][1][1], \
+            self.faces['D'][1][1], self.faces['D'][1][0], self.faces['L'][1][0], self.faces['L'][0][0] = \
+            self.faces['R'][0][1], self.faces['R'][1][1], self.faces['D'][1][1], self.faces['D'][1][0], \
+            self.faces['L'][1][0], self.faces['L'][0][0], self.faces['U'][0][0], self.faces['U'][0][1]
+
         if clockwise==False:
             self.faces['B'][0][0], self.faces['B'][0][1], self.faces['B'][1][0], self.faces['B'][1][1] = \
             self.faces['B'][1][0], self.faces['B'][0][0], self.faces['B'][1][1], self.faces['B'][0][1]
 
-    def is_solve(self) -> bool:
+            self.faces['U'][0][0], self.faces['U'][0][1], self.faces['R'][0][1], self.faces['R'][1][1], \
+            self.faces['D'][1][1], self.faces['D'][1][0], self.faces['L'][1][0], self.faces['L'][0][0] = \
+            self.faces['L'][1][0], self.faces['L'][0][0], self.faces['U'][0][0], self.faces['U'][0][1], \
+            self.faces['R'][0][1], self.faces['R'][1][1], self.faces['D'][1][1], self.faces['D'][1][0]
+
+    # END: Display the Rubik Cube #
+
+
+    # BEGIN: Check if Rubik is solved
+    def is_solved(self) -> bool:
 
         solved_rubik = {
             'U': [['W' for i in range(2)] for j in range(2)],
@@ -178,4 +220,4 @@ class RubikCube2:
                         return False
                     
         return True
-
+    # END: Check solved
