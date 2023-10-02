@@ -1,4 +1,5 @@
 from cube_2x2x2 import RubikCube2
+from random import randint
 
 class Interface:
     def __init__(self, rubik: RubikCube2) -> None:
@@ -46,6 +47,52 @@ class Interface:
                 if len(move) == 2:
                     self.rubik.rotate_face(face=face, clockwise=False)
 
-    def shuffle_from_random(self):
+    def shuffle_from_random(self, customize=False):
+        faces = {
+            0: 'U',
+            1: 'D',
+            2: 'L', 
+            3: 'R',
+            4: 'F',
+            5: 'B'
+        }
 
-        pass
+        clockwise = {
+            0: False,
+            1: True
+        }
+
+        # The default random steps is 20
+        random_steps=20
+
+        # When user change random steps
+        if customize==True:
+            random_steps = int(input('Enter your random steps: '))
+        
+        for _ in range(random_steps):
+            # Random face and clockwise
+            (f_rand, c_rand) = (randint(0, 5), randint(0, 1))
+
+            face = faces[f_rand]
+            cw = clockwise[c_rand]
+
+            self.rubik.rotate_face(face=face, clockwise=cw)
+
+    
+    def solve(self) -> None:
+
+        if self.rubik.is_solved() == False:
+            
+            ### START CODE HERE ###
+
+
+
+            ### END CODE HERE ###
+            pass
+
+        if self.rubik.is_solved() == True:
+            print("Solved")
+
+        return
+    
+    
