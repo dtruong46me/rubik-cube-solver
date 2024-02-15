@@ -1,7 +1,7 @@
 import sys
 sys.path.append('.')
 
-from objects.rubik_cube import RubikCube
+from objects.cube_3x3x3 import RubikCube
 
 test_rubik = RubikCube()
 

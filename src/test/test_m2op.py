@@ -1,7 +1,7 @@
 import sys
 sys.path.append('.')
 
-from objects.rubik_cube import RubikCube
+from objects.cube_3x3x3 import RubikCube
 from solver.m2op_solver import M2OPSolver
 
 rubik = RubikCube()
