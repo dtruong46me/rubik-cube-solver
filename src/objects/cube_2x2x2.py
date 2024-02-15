@@ -58,7 +58,6 @@ class RubikCube2:
 
     # BEGIN: Rotate Rubik Faces #
     def rotate_face(self, face: str, clockwise=True):
-        
         if face == 'U':
             self.move_U(clockwise)
 
@@ -77,7 +76,7 @@ class RubikCube2:
         if face == 'B':
             self.move_B(clockwise)
         
-        else:
+        if face not in ['L', 'R', 'U', 'D', 'F', 'B']:
             print("Invalid Rubik\'s face")
 
     # DETAILS: Rotate U D L R F B
@@ -194,7 +193,6 @@ class RubikCube2:
             self.faces['D'][1][1], self.faces['D'][1][0], self.faces['L'][1][0], self.faces['L'][0][0] = \
             self.faces['L'][1][0], self.faces['L'][0][0], self.faces['U'][0][0], self.faces['U'][0][1], \
             self.faces['R'][0][1], self.faces['R'][1][1], self.faces['D'][1][1], self.faces['D'][1][0]
-
     # END: Display the Rubik Cube #
 
 
